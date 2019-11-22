@@ -1,42 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { mapToMapExpression } from '@angular/compiler/src/render3/util';
-
-@Component({
-  selector: 'app-createform',
-  templateUrl: './createform.component.html',
-  styleUrls: ['./form.component.scss']
-})
-
-export class CreateFormComponent implements OnInit {
-  @Input() name;
-   //@Output() children:EventEmitter<any> = new EventEmitter();
-  contactList=[];
-  createForm: FormGroup;
-  constructor(public activeModal: NgbActiveModal){
-    this.createForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      company: new FormControl('', Validators.required),
-      address: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-    })
-  }
-
-  addContact(){
-      var data = this.createForm.value;
-      this.contactList.push(data);
-      this.createForm.reset();
-      this.activeModal.dismiss('Cross click');
-      //this.children.emit(this.contactList)
-      console.log(this.contactList);
-  }
-
-  ngOnInit(){
-
-  }
-}
 
 @Component({
   selector: 'app-form',
@@ -71,13 +35,6 @@ export class FormComponent implements OnInit {
   contactList=[
   ];
 
-  open() {
-    const modalRef = this.modalService.open(CreateFormComponent);
-    modalRef.componentInstance.name = 'World';
-    // modalRef.componentInstance.children.subscribe((receivedEntry) => {
-    //   console.log(receivedEntry);
-    // })
-  }
   addContact(){
     var b = document.querySelector('.popclose');
 
